@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/banks
+    username: banks
+    password: s3cr3t
+  jpa:
+    show-sql: true
+  application:
+    name: bank-service
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    org:
+      springframework: INFO
