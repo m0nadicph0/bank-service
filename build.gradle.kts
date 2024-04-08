@@ -32,6 +32,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
     runtimeOnly("org.flywaydb:flyway-core:7.11.0")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
 flyway {

@@ -1,5 +1,6 @@
 package com.example.bankservice.model;
 
+import com.example.bankservice.annotation.Fixed;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,7 @@ public class Bank {
     @Column(name = "tin")
     private String tin;
 
+    @Fixed
     @Column(name = "lei")
     private String lei;
 

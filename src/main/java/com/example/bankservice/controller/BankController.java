@@ -2,6 +2,7 @@ package com.example.bankservice.controller;
 
 import com.example.bankservice.model.Bank;
 import com.example.bankservice.service.BankService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +22,7 @@ public class BankController {
     }
 
     @PostMapping
-    public ResponseEntity<Bank> createBank(@RequestBody Bank bank){
+    public ResponseEntity<Bank> createBank(@RequestBody @Valid Bank bank){
         return ResponseEntity.ok(bankService.saveBank(bank));
     }
 
