@@ -11,7 +11,8 @@ import java.lang.annotation.*;
 @Documented
 @Constraint(validatedBy = FixedValidator.class)
 public @interface Fixed {
-    String message() default "value should be equal to fixed";
+    String message() default "The value must be exactly equal to {value} specified in the annotation, but value is {supplied}.";
+    String value();
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

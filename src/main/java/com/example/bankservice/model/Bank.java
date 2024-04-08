@@ -26,7 +26,7 @@ public class Bank {
     @Column(name = "tin")
     private String tin;
 
-    @Fixed
+    @Fixed(value = "12345678")
     @Column(name = "lei")
     private String lei;
 
