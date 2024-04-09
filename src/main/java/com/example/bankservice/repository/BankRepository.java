@@ -8,4 +8,8 @@ import java.util.UUID;
 
 @Repository
 public interface BankRepository extends JpaRepository<Bank, String> {
+    boolean existsByOrgId(String orgId);
+    boolean existsByTin(String tin);
+    boolean existsByRoutingNumber(String routingNumber);
+    boolean existsByLei(String lei);
 }

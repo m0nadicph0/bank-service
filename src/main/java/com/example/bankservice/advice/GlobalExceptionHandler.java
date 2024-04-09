@@ -1,6 +1,10 @@
 package com.example.bankservice.advice;
 
+import com.example.bankservice.dto.BusinessError;
+import com.example.bankservice.dto.ValidationError;
+import com.example.bankservice.exception.BusinessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -13,12 +17,15 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(WebExchangeBindException.class)
-    @ResponseStatus(HttpStatus.BAD_GATEWAY)
-    public Map<String, String> handleMethodArgumentException(WebExchangeBindException exception) {
-        Map<String, String> errorMap = new HashMap<>();
-        exception.getBindingResult().getFieldErrors().forEach(error -> {
-            errorMap.put(error.getField(), error.getDefaultMessage());
-        });
-        return errorMap;
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ValidationError> handleMethodArgumentException(WebExchangeBindException exception) {
+        return ResponseEntity.badRequest().body(ValidationError.from(exception));
+    }
+
+    @ExceptionHandler(BusinessException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<BusinessError> handleBusinessException(BusinessException exception) {
+
+        return ResponseEntity.badRequest().body(BusinessError.from(exception));
     }
 }

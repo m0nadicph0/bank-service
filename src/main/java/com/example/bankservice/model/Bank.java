@@ -4,6 +4,8 @@ import com.example.bankservice.annotation.Fixed;
 import com.example.bankservice.annotation.RoutingNumber;
 import com.example.bankservice.annotation.USPhoneNumber;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import java.util.UUID;
@@ -28,7 +30,7 @@ public class Bank {
     @Column(name = "tin")
     private String tin;
 
-    @Fixed(value = "12345678")
+    @NotEmpty
     @Column(name = "lei")
     private String lei;
 
@@ -40,6 +42,7 @@ public class Bank {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @NotEmpty
     @Column(name = "email")
     private String email;
 }

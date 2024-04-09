@@ -3,13 +3,13 @@ POST http://localhost:8080/api/banks
 Content-Type: application/json
 
 {
-  "orgId": "org1",
+  "orgId": "org22",
   "legalName": "My Bank",
-  "tin": "123456789",
-  "lei": "12345678",
-  "routingNumber": "112233445",
+  "tin": "123456788",
+  "lei": "",
+  "routingNumber": "112233446",
   "phoneNumber": "+1 (123) 456-7890",
-  "email": "info@mybank.com"
+  "email": ""
 }
 
 ###

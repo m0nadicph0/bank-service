@@ -1,5 +1,6 @@
 package com.example.bankservice.service.impl;
 
+import com.example.bankservice.exception.BusinessException;
 import com.example.bankservice.model.Bank;
 import com.example.bankservice.repository.BankRepository;
 import com.example.bankservice.service.BankService;
@@ -8,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class BankServiceImpl implements BankService {
@@ -23,6 +23,22 @@ public class BankServiceImpl implements BankService {
 
     @Override
     public Bank saveBank(Bank bank) {
+        if (bankRepository.existsByOrgId(bank.getOrgId())) {
+            throw new BusinessException("business_validation", "uniqueness_constraints", "bank already exists with this org id");
+        }
+
+        if (bankRepository.existsByTin(bank.getTin())) {
+            throw new BusinessException("business_validation", "uniqueness_constraints", "bank already exists with this tin");
+        }
+
+        if (bankRepository.existsByRoutingNumber(bank.getRoutingNumber())) {
+            throw new BusinessException("business_validation", "uniqueness_constraints", "bank already exists with this routing number");
+        }
+
+        if (bankRepository.existsByLei(bank.getLei())) {
+            throw new BusinessException("business_validation", "uniqueness_constraints", "bank already exists with this lei");
+        }
+
         return bankRepository.save(bank);
     }
 
