@@ -1,6 +1,8 @@
 package com.example.bankservice.model;
 
 import com.example.bankservice.annotation.Fixed;
+import com.example.bankservice.annotation.RoutingNumber;
+import com.example.bankservice.annotation.USPhoneNumber;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,9 +32,11 @@ public class Bank {
     @Column(name = "lei")
     private String lei;
 
+    @RoutingNumber
     @Column(name = "routing_number")
     private String routingNumber;
 
+    @USPhoneNumber
     @Column(name = "phone_number")
     private String phoneNumber;
 
